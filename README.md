@@ -58,12 +58,12 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [✓] Commit: `Implement delete function in Subscriber repository.`
     -   [✓] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
+    -   [✓] Commit: `Create Notification service struct skeleton.`
+    -   [✓] Commit: `Implement subscribe function in Notification service.`
+    -   [✓] Commit: `Implement subscribe function in Notification controller.`
+    -   [✓] Commit: `Implement unsubscribe function in Notification service.`
+    -   [✓] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [✓] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
     -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
     -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
@@ -86,5 +86,10 @@ Conceptually, `Vec` is similar to Java's `ArrayList`, whereas `DashMap` is compa
 3. `DashMap` remains necessary in this case. While it enables multithreaded processing for the `Subscriber` map, its built-in thread safety ensures safe concurrent operations. A Singleton pattern alone would not suffice without additional mechanisms to handle thread safety. Therefore, `DashMap` is still the preferred choice.
 
 #### Reflection Publisher-2
+1. Separating `Service` and `Repository` from the `Model` ensures compliance with the **Single Responsibility Principle (SRP)** from the SOLID principles. The `Repository` focuses on data access and storage, while the `Service` handles business logic and data processing. This separation enhances testability, allowing each component to be tested in isolation. Additionally, modifications to the `Repository` or `Service` can be made independently without impacting other parts, as each module operates separately.
+
+2. If we depend solely on the `Model` without separating `Service` and `Repository`, it would take on multiple responsibilities, from handling data storage to managing business logic. This tight coupling means that modifying one function could impact others, increasing the risk of bugs. Consequently, the codebase becomes harder to maintain, more complex, and less readable. Furthermore, as the application scales with multiple `Repository` and `Service` instances, the `Model` module could grow excessively large, making it even more difficult to manage.
+
+3. Postman is a powerful tool for testing API endpoints in our applications. It helps analyze program behavior by allowing us to send various types of requests (GET, POST, PUT, DELETE, etc.) to the server. The responses are displayed in Postman, making it easier to validate whether the endpoints work correctly. Seems like posting is the way to go, not burping—oops! 
 
 #### Reflection Publisher-3
