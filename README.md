@@ -48,15 +48,15 @@ You can install Postman via this website: https://www.postman.com/downloads/
     (You might want to use `cargo check` if you only need to verify your work without running the app.)
 
 ## Mandatory Checklists (Publisher)
--   [ ] Clone https://gitlab.com/ichlaffterlalu/bambangshop to a new repository.
+-   [✓] Clone https://gitlab.com/ichlaffterlalu/bambangshop to a new repository.
 -   **STAGE 1: Implement models and repositories**
-    -   [ ] Commit: `Create Subscriber model struct.`
-    -   [ ] Commit: `Create Notification model struct.`
-    -   [ ] Commit: `Create Subscriber database and Subscriber repository struct skeleton.`
-    -   [ ] Commit: `Implement add function in Subscriber repository.`
-    -   [ ] Commit: `Implement list_all function in Subscriber repository.`
-    -   [ ] Commit: `Implement delete function in Subscriber repository.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
+    -   [✓] Commit: `Create Subscriber model struct.`
+    -   [✓] Commit: `Create Notification model struct.`
+    -   [✓] Commit: `Create Subscriber database and Subscriber repository struct skeleton.`
+    -   [✓] Commit: `Implement add function in Subscriber repository.`
+    -   [✓] Commit: `Implement list_all function in Subscriber repository.`
+    -   [✓] Commit: `Implement delete function in Subscriber repository.`
+    -   [✓] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
     -   [ ] Commit: `Create Notification service struct skeleton.`
     -   [ ] Commit: `Implement subscribe function in Notification service.`
@@ -77,6 +77,13 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
+1. Given the current simplicity of BambangShop, where the Subscriber class acts as the sole observer, a single model struct suffices for now. Implementing a trait would become essential if Subscriber needed to accommodate multiple variations or behaviors. This approach aligns with the Open/Closed Principle from the SOLID design principles.
+
+2. `DashMap` provides several advantages over `Vec`, primarily due to its key-value system, which enables direct mapping of `id` and `url` to their respective `Program` and `Subscriber`. Additionally, `DashMap` handles large datasets and high request volumes efficiently.  
+
+Conceptually, `Vec` is similar to Java's `ArrayList`, whereas `DashMap` is comparable to `ConcurrentHashMap`. When retrieving a value by `id` or `url`, `DashMap` offers an average and worst-case time complexity of O(1), while `Vec` may require O(n) in the worst case.
+
+3. `DashMap` remains necessary in this case. While it enables multithreaded processing for the `Subscriber` map, its built-in thread safety ensures safe concurrent operations. A Singleton pattern alone would not suffice without additional mechanisms to handle thread safety. Therefore, `DashMap` is still the preferred choice.
 
 #### Reflection Publisher-2
 
