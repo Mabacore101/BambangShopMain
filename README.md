@@ -65,11 +65,11 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [✓] Commit: `Implement unsubscribe function in Notification controller.`
     -   [✓] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
-    -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
-    -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
-    -   [ ] Commit: `Implement publish function in Program service and Program controller.`
-    -   [ ] Commit: `Edit Product service methods to call notify after create/delete.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
+    -   [✓] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
+    -   [✓] Commit: `Implement notify function in Notification service to notify each Subscriber.`
+    -   [✓] Commit: `Implement publish function in Program service and Program controller.`
+    -   [✓] Commit: `Edit Product service methods to call notify after create/delete.`
+    -   [✓] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -93,3 +93,8 @@ Conceptually, `Vec` is similar to Java's `ArrayList`, whereas `DashMap` is compa
 3. Postman is a powerful tool for testing API endpoints in our applications. It helps analyze program behavior by allowing us to send various types of requests (GET, POST, PUT, DELETE, etc.) to the server. The responses are displayed in Postman, making it easier to validate whether the endpoints work correctly. Seems like posting is the way to go, not burping—oops! 
 
 #### Reflection Publisher-3
+1. This tutorial follows the **Push model** variation, where events like adding or deleting a product trigger the `NotificationService`. It loops through all subscribers and sends them the relevant notification data. In a way, it’s like that one friend who insists on waking everyone up after oversleeping.  
+
+2. With the **Pull model**, subscribers can fetch only the specific data they need. However, since the publisher only sends a notification without the actual data, subscribers must handle the logic to retrieve the correct information themselves. This adds complexity on the subscriber’s side. Instead of being fed notifications by the publisher, subscribers now have the freedom to decide what to fetch—more like a "come grab your meal" scenario rather than a "here’s your meal" approach.  
+
+3. If we don’t implement multithreading, all notifications will be processed sequentially on a single thread. This means the program will notify each subscriber one by one, leading to long queues and delays. As the number of subscribers grows, this sequential processing can put a heavy load on the server, potentially affecting performance. Think of a pizza place with just one delivery guy—sure, you’ll get your free pizza, but how long will you have to wait? Now, if we have more delivery guys, you might not get a free pizza, but at least you won’t be waiting forever.
